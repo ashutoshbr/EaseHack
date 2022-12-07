@@ -1,0 +1,2 @@
+python-gnupg==0.5.0
+segno==1.5.2
