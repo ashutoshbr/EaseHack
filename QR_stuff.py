@@ -1,5 +1,6 @@
 import segno
 import csv, os
+from main import sign_data
 
 with open("./data.csv") as csv_file:
     csv_reader = csv.reader(csv_file)
@@ -11,7 +12,8 @@ with open("./data.csv") as csv_file:
 
     # Iterate over each row and make QR
     for row in csv_reader:
-        qrcode = segno.make_qr(row[0], error="H")
+        encoded_data = sign_data(row[0].encode("ascii"))
+        qrcode = segno.make_qr(encoded_data, error="H")
 
         # Save generated QR in the QRs folder
         qrcode.save(f"./QRs/{row[0]}" + ".png", scale=3)
