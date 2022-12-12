@@ -1,17 +1,33 @@
 from nacl.signing import SigningKey
 from nacl.encoding import Base64Encoder
+from nacl.exceptions import BadSignatureError
 
 signing_key = SigningKey.generate()
 
 priv_key_b64 = signing_key.encode(encoder=Base64Encoder)
 pub_key_b64 = signing_key.verify_key.encode(encoder=Base64Encoder)
 
-data = b"Data to be encoded"
+data = b"Asta Raven"
+
+print("pv: ", priv_key_b64)  # private key in alpha-numeric encoding
+print("pb: ", pub_key_b64)  # public key in alpha-numeric encoding
 
 
 def sign_data(data: bytes):
     signed_b64 = signing_key.sign(data, encoder=Base64Encoder)
     return signed_b64
+
+
+signed_b64 = sign_data(data)
+print(signed_b64)
+
+
+def verify_data(data: bytes):
+    try:
+        verified = signing_key.verify_key.verify(data, encoder=Base64Encoder)
+    except BadSignatureError:
+        return "Forged!"
+    return f"Certificate belongs to {verified.decode('ascii')}"
 
 
 if __name__ == "__main__":

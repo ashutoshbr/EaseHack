@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from . import schemas
+from main import verify_data
 
 app = FastAPI()
 
@@ -10,5 +10,6 @@ def get_home():
 
 
 @app.post("/")
-def post_home(encoded_data: schemas.PostHome):
-    return "Verified"
+def post_home(encoded_data: str):
+    verified = verify_data(bytes(encoded_data, encoding="ascii"))
+    return verified
