@@ -9,17 +9,12 @@ pub_key_b64 = signing_key.verify_key.encode(encoder=Base64Encoder)
 
 data = b"Asta Raven"
 
-print("pv: ", priv_key_b64)  # private key in alpha-numeric encoding
-print("pb: ", pub_key_b64)  # public key in alpha-numeric encoding
-
 
 def sign_data(data: bytes):
     signed_b64 = signing_key.sign(data, encoder=Base64Encoder)
+    print("pv: ", priv_key_b64)  # private key in alpha-numeric encoding
+    print("pb: ", pub_key_b64)  # public key in alpha-numeric encoding
     return signed_b64
-
-
-signed_b64 = sign_data(data)
-print(signed_b64)
 
 
 def verify_data(data: bytes):
