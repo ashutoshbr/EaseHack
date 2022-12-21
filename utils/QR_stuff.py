@@ -1,6 +1,6 @@
 import segno
 import csv, os
-from main import sign_data
+from utils.transcoder import sign_data
 
 with open("./data.csv") as csv_file:
     csv_reader = csv.reader(csv_file)

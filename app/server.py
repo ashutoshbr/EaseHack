@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from main import verify_data
+from utils.transcoder import verify_data
 
 app = FastAPI()
 
