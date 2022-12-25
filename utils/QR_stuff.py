@@ -1,5 +1,5 @@
 import segno
-import csv, os
+import csv, os, shutil
 from utils.transcoder import sign_data
 
 with open("./data.csv") as csv_file:
@@ -8,11 +8,13 @@ with open("./data.csv") as csv_file:
     try:
         os.makedirs("QRs")
     except OSError:
-        print("Directory named QRs already exists")
+        print("Old QRs directory was removed for the new one")
+        shutil.rmtree("./QRs/")
+        os.makedirs("QRs")
 
     # Iterate over each row and make QR
     for row in csv_reader:
-        encoded_data = sign_data(row[0].encode("ascii"))
+        encoded_data = sign_data(row[0].encode("utf-8"))
         qrcode = segno.make_qr(encoded_data, error="H")
 
         # Save generated QR in the QRs folder

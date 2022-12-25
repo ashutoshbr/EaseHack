@@ -11,5 +11,5 @@ def get_home():
 
 @app.post("/")
 def post_home(encoded_data: str):
-    verified = verify_data(bytes(encoded_data, encoding="ascii"))
+    verified = verify_data(bytes(encoded_data, encoding="utf-8"))
     return verified
