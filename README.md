@@ -3,7 +3,7 @@ A simple project to help hackathon organizers sign certificates digitally.
 
 ## How it works ⚙️
 1. Scan the QR code.
-2. Set `encoded_data` in the header to the data obtianed from QR.
+2. Set `encoded_data` in the query parameter to the data obtianed from QR.
 3. Send the POST request to `localhost:8000/`
 4. Response can be:
     - "Forged!" --> if the signature was tampered
