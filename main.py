@@ -1,14 +1,39 @@
 from rich.console import Console
 from rich.table import Table
-
-table = Table(expand=True, style="green", highlight=True)
-
-table.add_column("Welcome to EaseHack", justify="center", no_wrap=True)
-# table.add_column("Title", style="magenta")
-
-table.add_row("👉 Press 1 to generate private & public key.")
-table.add_row("👉 Press 2 to save a pair of key in .env.")
-table.add_row("👉 Press 0 to exit.")
+from utils.transcoder import f_pv, f_pb
+from utils.qr_stuff import gen_qr
+from utils.transcoder import verify_data
 
 console = Console()
+table = Table(expand=True, style="green", highlight=True, show_edge=False)
+
+table.add_column("Welcome to EaseHack", justify="center", no_wrap=True)
+
 console.print(table)
+console.print("Press 1 to generate keys", style="green")
+console.print("Press 2 to save keys in .env file", style="green")
+console.print("Press 3 to use data.csv to generate QRs", style="green")
+console.print("Press 4 to verify", style="green")
+console.print("Press 0 to exit.", style="green")
+
+
+while True:
+    user_input = int(input("Enter your choice: "))
+    match user_input:
+        case 1:
+            print(f"PV_KEY={f_pv}")
+            print(f"PB_KEY={f_pb}")
+        case 2:
+            with open(".env", "w+") as env_file:
+                env_file.write(f"PV_KEY={f_pv}\nPB_KEY={f_pb}")
+        case 3:
+            console.print(
+                "Warning!!! Your previous keys have been overwritten", style="red"
+            )
+            gen_qr()
+        case 4:
+            encoded_data = input("Encoded data = ")
+            verified = verify_data(bytes(encoded_data, encoding="utf-8"))
+            console.print(verified, style="green bold")
+        case 0:
+            exit()
