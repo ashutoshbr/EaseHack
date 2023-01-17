@@ -25,11 +25,6 @@ python main.py
 uvicorn app.server:app --reload
 ```
 
-### Tests
-```bash
-py -m unittest .\tests\test_sign_data.py
-```
-
 ### Sample of contents in `.env` file 🔑
 ```
 PV_KEY=63c2195a0a01abf82b5f3241dfb1f79b067dc15bcbcb123438ce8175f9850fbd
