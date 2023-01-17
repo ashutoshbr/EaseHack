@@ -1,5 +1,5 @@
 # EaseHack 🔏
-A simple project to help hackathon organizers sign certificates digitally.
+A simple project to aid with the creation and validation of digital signatures
 
 ## How it works ⚙️
 1. Scan the QR code.
@@ -16,14 +16,15 @@ A simple project to help hackathon organizers sign certificates digitally.
 ```bash
 pip install -r requirements.txt
 ```
+### CLI
+```py
+python main.py
+```
 ### Server 
 ```
 uvicorn app.server:app --reload
 ```
-### Generate new QRs
-```bash
-py -m unittest .\utils\qr_stuff.py
-```
+
 ### Tests
 ```bash
 py -m unittest .\tests\test_sign_data.py
@@ -31,6 +32,6 @@ py -m unittest .\tests\test_sign_data.py
 
 ### Sample of contents in `.env` file 🔑
 ```
-SIGNING_KEY=15c805c23e3cbe1659a872bb27117f7433ebcc5b549baf43143ec35b922350de
-VERIFY_KEY=0c27d89d44f424ac79278e218baa4a7c2842072c816a692ac0d84d84da03e003
+PV_KEY=63c2195a0a01abf82b5f3241dfb1f79b067dc15bcbcb123438ce8175f9850fbd
+PB_KEY=24e3d7f257d7fb24255b1dcfa2170fb111e2e38be9369897d8cf4270452becc4
 ```
