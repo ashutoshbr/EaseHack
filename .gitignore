@@ -161,3 +161,6 @@ cython_debug/
 
 # backup keys
 keys.bak.txt
+
+# pause QR push
+QRs/
