@@ -2,7 +2,8 @@
 A simple project to aid with the creation and validation of digital signatures
 
 [Frontend prototype 🖌️](https://github.com/ashutoshbr/EaseHack/blob/main/docs/frontend.md)
-*[will update the repo for frontend here]*
+[Mobile APK 📲](https://github.com/SvarnimN/EaseHack-App/releases)
+[Frontend Source Code 📃](https://github.com/SvarnimN/EaseHack-App)
 ## How it works ⚙️
 1. Scan the QR code.
 2. Set `encoded_data` in the query parameter to the data obtianed from QR.
