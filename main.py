@@ -28,10 +28,10 @@ while True:
         case 2:
             with open(".env", "w+") as env_file:
                 env_file.write(f"PV_KEY={f_pv}\nPB_KEY={f_pb}")
+                console.print(
+                    "Warning!!! Your previous keys have been overwritten", style="red"
+                )
         case 3:
-            console.print(
-                "Warning!!! Your previous keys have been overwritten", style="red"
-            )
             gen_qr()
         case 4:
             encoded_data = input("Encoded data = ")

@@ -8,17 +8,17 @@ load_dotenv()
 
 signing_key = SigningKey.generate()
 
-priv_key_b64 = signing_key.encode(encoder=HexEncoder)
-pub_key_b64 = signing_key.verify_key.encode(encoder=HexEncoder)
+priv_key_hex = signing_key.encode(encoder=HexEncoder)
+pub_key_hex = signing_key.verify_key.encode(encoder=HexEncoder)
 
 # Keys in string format
-f_pv = priv_key_b64.decode("utf-8")
-f_pb = pub_key_b64.decode("utf-8")
+f_pv = priv_key_hex.decode("utf-8")
+f_pb = pub_key_hex.decode("utf-8")
 
 
 def sign_data(data: bytes):
-    signed_b64 = signing_key.sign(data, encoder=HexEncoder)
-    return signed_b64
+    signed_hex = signing_key.sign(data, encoder=HexEncoder)
+    return signed_hex
 
 
 def verify_data(data: bytes):
